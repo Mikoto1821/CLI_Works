@@ -16,7 +16,7 @@ enum class Category {
     MISC
 };
 
-std::string categoryToString(Category cat) {
+string categoryToString(Category cat) {
     switch(cat) {
         case Category::WEAPON: return "Weapon";
         case Category::FOOD:   return "Food";
@@ -27,9 +27,9 @@ std::string categoryToString(Category cat) {
     }
 }
 
-Category stringToCategory(const std::string& s) {
-    std::string lower = s;
-    std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+Category stringToCategory(const string& s) {
+    string lower = s;
+    transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
     if (lower == "weapon") return Category::WEAPON;
     if (lower == "food") return Category::FOOD;
     if (lower == "loot") return Category::LOOT;
@@ -38,6 +38,15 @@ Category stringToCategory(const std::string& s) {
     return Category::MISC;
 }
 
+struct item {
+    int id;
+    string name;
+    Category category;
+    int quantity;
+    string description;
+};
+
 int main() {
     cout << "Unfinished works, BRB! " << endl;
+    return 0;
 }
