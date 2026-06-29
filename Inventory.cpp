@@ -46,6 +46,21 @@ struct item {
     string description;
 };
 
+class Inventory {
+    public: 
+        static const int MAX_SLOTS = 20;
+        static const int MAX_STACKS = 99;
+
+        Inventory() : nextID(1) {}
+
+        void printHeader() const {
+            cout << "\n";
+            cout << "  ╔══════════════════════════════════════════════════════════════╗\n";
+            cout << "  ║              ⚔  ADVENTURER'S INVENTORY  ⚔                  ║\n";
+            cout << "  ╚══════════════════════════════════════════════════════════════╝\n";
+        }
+};
+
 int main() {
     cout << "Unfinished works, BRB! " << endl;
     return 0;
