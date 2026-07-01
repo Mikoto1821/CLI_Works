@@ -20,7 +20,7 @@ string categoryToString(Category cat) {
     switch(cat) {
         case Category::WEAPON: return "Weapon";
         case Category::FOOD:   return "Food";
-        case Category::LOOT:   return "Food";
+        case Category::LOOT:   return "Loot";
         case Category::ARMOR:  return "Armor";
         case Category::POTION: return "Potion";
         case Category::MISC:   return "Misc";
@@ -38,7 +38,7 @@ Category stringToCategory(const string& s) {
     return Category::MISC;
 }
 
-struct item {
+struct Item {
     int id;
     string name;
     Category category;
@@ -53,7 +53,7 @@ class Inventory {
 
         Inventory() : nextID(1) {}
 
-        void printHeader() const {
+        void Inventory::printHeader() const {
             cout << "\n";
             cout << "  ╔══════════════════════════════════════════════════════════════╗\n";
             cout << "  ║              ⚔  ADVENTURER'S INVENTORY  ⚔                  ║\n";
@@ -61,7 +61,34 @@ class Inventory {
         }
 };
 
+void Inventory::printInventory() const {
+    printHeader();
+    cout << " Slots used: " << items.size() << " / " << MAX_SLOTS << "\n\n";
+
+    if (items.empty()) {
+        cout << " [ Your inventory is empty, nothing to grab. ]\n\n";
+        return;
+    }
+    cout << " " << std::left
+        << std::setw(4) << "ID"
+        << std::setw(20) << "Name"
+        << std::setw(10) << "Category"
+        << std::setw(6) << "Qty"
+        << "Description\n";
+    cout << "  " << string(62, '-') << "\n";
+
+    for (const auto& item : items) {
+        cout << " " <<  std::left
+            << std::setw(4) << item.id
+            << std::setw(20) << item.name
+            << std::setw(10) << categoryToString(item.category)
+            << std::setw(6) << item.quantity
+            << item.description << "\n";
+    }
+    cout << "\n";
+}
+
 int main() {
-    cout << "Unfinished works, BRB! " << endl;
+    cout << "Ongoing Works!!! thank you." << endl;
     return 0;
 }
